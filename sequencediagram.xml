@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SequenceDiagram>
+		<Objects>
+			<name>Actor</name>
+			<name>Kiosk</name>
+		</Objects>
+		<Messages>
+			<Message>
+				<orderNumber>1</orderNumber>
+				<initObject>Actor</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>method</contentType>
+				<content>insertCard(customer)</content>
+			</Message>
+			<Message>
+				<orderNumber>2</orderNumber>
+				<initObject>Actor</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>method</contentType>
+				<content>pickDate(date)</content>
+			</Message>				
+			<Loop>
+				messageNumber = ".."
+				condition = ".."
+				objectName = ".."
+			</Loop>
+			<Alt>
+				<SubAlt1>
+					messageNumber = ".."
+					condition = ".."
+					objectName = ".."
+				</SubAlt1>
+				<SubAlt2>
+					messageNumber = ".."
+					condition = ".."
+					objectName = ".."
+				</SubAlt2>
+			</Alt>
+			<Opt>
+				messageNumber = ".."
+				condition = ".."
+				objectName = ".."
+			</Opt>
+		</Messages>
+</SequenceDiagram>

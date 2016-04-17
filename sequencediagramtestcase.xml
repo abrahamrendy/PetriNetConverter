@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SequenceDiagram>
+		<Objects>
+			<name>Actor</name>
+			<name>Kiosk</name>
+		</Objects>
+		<Messages>
+			<Message>
+				<orderNumber>1</orderNumber>
+				<initObject>Actor</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>method</contentType>
+				<content>insertCard(customer)</content>
+			</Message>
+			<Message>
+				<orderNumber>2</orderNumber>
+				<initObject>Actor</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>method</contentType>
+				<content>pickDate(date)</content>
+			</Message>	
+			<Message>
+				<orderNumber>3</orderNumber>
+				<initObject>Kiosk</initObject>
+				<destObject>Actor</destObject>
+				<contentType>method</contentType>
+				<content>offer(seatChoice)</content>
+			</Message>
+			<Message>
+				<orderNumber>4</orderNumber>
+				<initObject>Actor</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>method</contentType>
+				<content>select(seats)</content>
+			</Message>	
+			<Message>
+				<orderNumber>5</orderNumber>
+				<initObject>Kiosk</initObject>
+				<destObject>TicketServer</destObject>
+				<contentType>method</contentType>
+				<content>submit(order)</content>
+			</Message>	
+			<Message>
+				<orderNumber>6</orderNumber>
+				<initObject>TicketServer</initObject>
+				<destObject>CreditService</destObject>
+				<contentType>method</contentType>
+				<content>charge(customer,amount)</content>
+			</Message>	
+			<Message>
+				<orderNumber>7</orderNumber>
+				<initObject>CreditService</initObject>
+				<destObject>TicketServer</destObject>
+				<contentType>signal</contentType>
+				<content>authorize</content>
+			</Message>	
+			<Message>
+				<orderNumber>8</orderNumber>
+				<initObject>TicketServer</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>signal</contentType>
+				<content>OK</content>
+			</Message>	
+			<Message>
+				<orderNumber>9</orderNumber>
+				<initObject>Kiosk</initObject>
+				<destObject>Actor</destObject>
+				<contentType>method</contentType>
+				<content>print(order)</content>
+			</Message>	
+			<Loop>
+				messageNumber = ".."
+				condition = ".."
+				objectName = ".."
+			</Loop>
+			<Alt>
+				<SubAlt1>
+					messageNumber = ".."
+					condition = ".."
+					objectName = ".."
+				</SubAlt1>
+				<SubAlt2>
+					messageNumber = ".."
+					condition = ".."
+					objectName = ".."
+				</SubAlt2>
+			</Alt>
+			<Opt>
+				messageNumber = ".."
+				condition = ".."
+				objectName = ".."
+			</Opt>
+		</Messages>
+</SequenceDiagram>

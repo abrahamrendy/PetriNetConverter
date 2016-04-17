@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://cpntools.org/DTD/6/cpn.dtd">
+<workspaceElements>
+    <generator format="6" tool="CPN Tools" version="4.0.1"/>
+    <cpnet>
+        <globbox/>
+    <page id="ID1293">
+      <pageattr name="Page"/>
+      <place id="A1">
+        <text>Actor</text>
+      </place>
+      <trans id="T1"
+             explicit="false">
+        <text>Put Down
+Chopsticks</text>
+      </trans>
+      <arc id="ID1384"
+           orientation="BOTHDIR"
+           order="0">
+        <transend idref="T1"/>
+        <placeend idref="A1"/>
+      </arc>
+      
+      <constraints/>
+    </page>
+	  
+    </cpnet>
+</workspaceElements>

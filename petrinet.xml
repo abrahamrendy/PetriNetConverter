@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE workspaceElements PUBLIC "-//CPN//DTD CPNXML 1.0//EN" "http://cpntools.org/DTD/6/cpn.dtd">
+<workspaceElements>
+    <generator format="6" tool="CPN Tools" version="4.0.1"/>
+    <cpnet>
+        <globbox>
+            <block id="ID1">
+                <id>Standard declarations</id>
+                <color id="">
+                    <id>STRING</id>
+                    <string/>
+                </color>
+                <color id="">
+                    <id>NUM</id>
+                    <int/>
+                    <layout>colset NUM = int;</layout>
+                </color>
+                <color id="">
+                    <id>TYPE</id>
+                    <enum>
+                        <id>m</id>
+                        <id>s</id>
+                        <id>d</id>
+                        <id>c</id>
+                    </enum>
+                    <layout>colset TYPE = with m | s | c | d;</layout>
+                </color>
+                <color id="">
+                    <id>ACT</id>
+                    <enum>
+                        <id>send</id>
+                        <id>receive</id>
+                    </enum>
+                    <layout>colset ACT = with send | receive;</layout>
+                </color>
+                <color id="">
+                    <id>CONTENT</id>
+                    <string/>
+                </color>
+                <var id="">
+                    <type>
+                        <id>NUM</id>
+                    </type>
+                    <id>n</id>
+                    <id>n1</id>
+                    <id>n2</id>
+                    <id>n3</id>
+                    <id>n4</id>
+                    <layout>var n,n1,n2,n3,n4 : NUM;</layout>
+                </var>
+                <var id="">
+                    <type>
+                        <id>TYPE</id>
+                    </type>
+                    <id>t</id>
+                    <id>t1</id>
+                    <id>t2</id>
+                    <id>t3</id>
+                    <id>t4</id>
+                    <layout>var t,t1,t2,t3,t4 : TYPE;</layout>
+                </var>
+                <var id="">
+                    <type>
+                        <id>ACT</id>
+                    </type>
+                    <id>a</id>
+                    <id>a1</id>
+                    <id>a2</id>
+                    <id>a3</id>
+                    <id>a4</id>
+                    <layout>var a,a1,a2,a3,a4 : ACT;</layout>
+                </var>
+                <var id="">
+                    <type>
+                        <id>CONTENT</id>
+                    </type>
+                    <id>ct</id>
+                    <id>ct1</id>
+                    <id>ct2</id>
+                    <id>ct3</id>
+                    <id>ct4</id>
+                    <layout>var ct,ct1,ct2,ct3,ct4 : CONTENT;</layout>
+                </var>
+                <color id="">
+                    <id>TYPExACTxCONTENT</id>
+                    <timed/>
+                    <product>
+                        <id>TYPE</id>
+                        <id>ACT</id>
+                        <id>CONTENT</id>
+                    </product>
+                    <layout>colset TYPExACTxCONTENT = product TYPE*ACT*CONTENT timed;</layout>
+                </color>
+                <var id="">
+                    <type>
+                        <id>TYPExACTxCONTENT</id>
+                    </type>
+                    <id>exp</id>
+                    <layout>var exp : TYPExACTxCONTENT;</layout>
+                </var>
+            </block>
+        </globbox>
+        <page id="">
+            <pageattr name="Page"/>
+            <place id="A1">
+                <text>Actor</text>
+            </place>
+            <place id="K2">
+                <text>Kiosk</text>
+            </place>
+            <place id="A3">
+                <text>Actor</text>
+            </place>
+            <place id="K4">
+                <text>Kiosk</text>
+            </place>
+            <trans explicit="false" id="Trans1">
+                <text>insertCard(customer)</text>
+            </trans>
+            <trans explicit="false" id="Trans2">
+                <text>pickDate(date)</text>
+            </trans>
+            <arc id="Arc1" order="0" orientation="PtoT">
+                <transend idref="Trans1"/>
+                <placeend idref="A1"/>
+            </arc>
+            <arc id="Arc2" order="0" orientation="PtoT">
+                <transend idref="Trans1"/>
+                <placeend idref="K2"/>
+            </arc>
+            <arc id="Arc3" order="0" orientation="TtoP">
+                <transend idref="Trans1"/>
+                <placeend idref="A3"/>
+            </arc>
+            <arc id="Arc4" order="0" orientation="TtoP">
+                <transend idref="Trans1"/>
+                <placeend idref="K4"/>
+            </arc>
+            <arc id="Arc5" order="0" orientation="PtoT">
+                <transend idref="Trans2"/>
+                <placeend idref="A3"/>
+            </arc>
+            <arc id="Arc6" order="0" orientation="PtoT">
+                <transend idref="Trans2"/>
+                <placeend idref="K4"/>
+            </arc>
+            <arc id="Arc7" order="0" orientation="TtoP">
+                <transend idref="Trans2"/>
+                <placeend idref="A1"/>
+            </arc>
+            <arc id="Arc8" order="0" orientation="TtoP">
+                <transend idref="Trans2"/>
+                <placeend idref="K2"/>
+            </arc>
+            <constraint/>
+        </page>
+    </cpnet>
+</workspaceElements>

@@ -1,0 +1,144 @@
+Beta execution aborted: Unordered Floating Point value in comparison.
+
+Call chain: (nti_ms)
+
+  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
+    -- * in C:/cpn2000/cpntools/instruments/moveinstruments
+  [ EXTERNAL ACTIVATION PART (address 0x0) ]
+  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
+    -- * in C:/cpn2000/cpntools/instruments/moveinstruments
+  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
+    -- * in C:/cpn2000/cpntools/instruments/moveinstruments
+  item <onMouseMove#>onMouseMove# in ~beta/postwimp/foundation/world
+    -- GenericMover#GenericInstrument#EditableInstrument#Instrument# in ~beta/postwimp/workspace
+  item onMouseMove#<onMouseMove#> in ~beta/postwimp/foundation/world
+    -- GenericMover#GenericInstrument#EditableInstrument#Instrument# in ~beta/postwimp/workspace
+  item <*> in ~beta/postwimp/private/workspacepickinstrumentbody
+    -- onMouseMove#onMouseMove# in ~beta/postwimp/workspace
+  item <onMouseMove#>onMouseMove# in ~beta/postwimp/workspace
+    -- PickInstrument#Instrument# in ~beta/postwimp/workspace
+  item onMouseMove#<onMouseMove#> in ~beta/postwimp/foundation/world
+    -- PickInstrument#Instrument# in ~beta/postwimp/workspace
+  item <*> in ~beta/postwimp/foundation/private/worldbody
+    -- mouseMove# in ~beta/postwimp/foundation/world
+  item <mouseMove#> in ~beta/postwimp/foundation/world
+    -- Hand#Entity#Notifier#Element# in ~beta/postwimp/foundation/world
+  item <mousePosition#> in ~beta/postwimp/foundation/world
+    -- Hand#Entity#Notifier#Element# in ~beta/postwimp/foundation/world
+  item <*>scan# in ~beta/postwimp/foundation/private/worldbody
+    -- mousePosition# in ~beta/postwimp/foundation/world
+  item *<scan#> in ~beta/postwimp/foundation/world
+    -- HandManager# in ~beta/postwimp/foundation/world
+  item *<scan#> in ~beta/containers/container
+    -- hands#list#container# in ~beta/postwimp/foundation/world
+  item <thescanner#>theScanner# in ~beta/containers/list
+    -- hands#list#container# in ~beta/postwimp/foundation/world
+  item thescanner#<theScanner#> in ~beta/containers/container
+    -- hands#list#container# in ~beta/postwimp/foundation/world
+  item *<scan#> in ~beta/containers/container
+    -- hands#list#container# in ~beta/postwimp/foundation/world
+  item *<scan#> in ~beta/postwimp/foundation/world
+    -- HandManager# in ~beta/postwimp/foundation/world
+  item <mousePosition#> in ~beta/postwimp/foundation/world
+    -- HandManager# in ~beta/postwimp/foundation/world
+  item <onMousePosition#>onMousePosition# in ~beta/postwimp/foundation/private/worldbody
+    -- WidgetHandler#SurfaceHandler# in ~beta/postwimp/foundation/private/worldbody
+  item onMousePosition#<onMousePosition#> in ~beta/postwimp/foundation/abstractsurface
+    -- WidgetHandler#SurfaceHandler# in ~beta/postwimp/foundation/private/worldbody
+  item <onMousePosition#>onMousePosition# in ~beta/postwimp/foundation/guisurface
+    -- handle#InputHandler# in ~beta/postwimp/foundation/guisurface
+  item onMousePosition#<onMousePosition#> in ~beta/postwimp/foundation/inputcanvas
+    -- handle#InputHandler# in ~beta/postwimp/foundation/guisurface
+  item <dispatchMessage#>dispatchMessage#dispatchMessage# in ~beta/postwimp/foundation/private/inputcanvasntibody
+    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
+  item <dispatchMessage#>dispatchMessage#dispatchMessage# in ~beta/postwimp/foundation/private/inputcanvasntibody
+    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
+  item dispatchMessage#<dispatchMessage#>dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
+  item <dispatchMessage#>dispatchMessage#dispatchMessage# in ~beta/postwimp/foundation/private/inputcanvasntibody
+    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
+  item dispatchMessage#dispatchMessage#<dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
+  item <GUIENVINTERFACEOBJECTDISPATCHMESSAGE-~> in ~beta/guienv/private/winnt/guienv_ntibody
+    -- dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- InputCanvas#canvas#windowitem#interfaceObject# in ~beta/postwimp/foundation/inputcanvas
+  item <GUIENVSTANDARDWINDOWPROC-~> in ~beta/guienv/private/winnt/guienv_ntibody
+    -- StandardWindowProc# in ~beta/guienv/private/winnt/guienv_ntiprivate
+  item <*>cycle# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item *<cycle#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  comp <XcallbackThread#>System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  comp XcallbackThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  comp XcallbackThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+
+  item attNext#<realValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <next#> in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item <registerCallback#>XsystemEnvHandleCallbackP# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item registerCallback#<XsystemEnvHandleCallbackP#> in ~beta/guienv/guienv
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  [ EXTERNAL ACTIVATION PART ]
+  item <processOneEvent#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <mainLoop#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <GUIenv#> in ~beta/guienv/guienv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <run#>run# in ~beta/postwimp/foundation/guisurface
+    -- GUISurface#Surface# in ~beta/postwimp/foundation/guisurface
+  item run#<run#> in ~beta/postwimp/foundation/abstractsurface
+    -- GUISurface#Surface# in ~beta/postwimp/foundation/guisurface
+  item <platformAfter#> in ~beta/postwimp/foundation/private/worldbody
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  item <after#> in ~beta/postwimp/foundation/world
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  comp PROGRAM-~CPNWorkSpace#Workspace#<World#>SystemEnv#SysHead# in ~beta/postwimp/foundation/world
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  comp PROGRAM-~CPNWorkSpace#Workspace#World#<SystemEnv#>SysHead# in ~beta/basiclib/basicsystemenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  comp PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#<SysHead#> in ~beta/basiclib/basicsystemenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+
+  item <attNext#>realValue# in ~beta/basiclib/private/basicsystemenvbody
+    -- BASICSYSTEMENVPRIVATE-~ in ~beta/basiclib/private/basicsystemenvbody
+  item attNext#<realValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <UIIdle#>booleanValue# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item UIIdle#<booleanValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <processOneEvent#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <mainLoop#> in ~beta/guienv/private/winnt/guienv_ntiprivate
+    -- GUIenv# in ~beta/guienv/guienv
+  item <GUIenv#> in ~beta/guienv/guienv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <start#> in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  comp <BASICSCHEDULER-~>SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+    -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
+  comp BASICSCHEDULER-~<SysHead#> in ~beta/basiclib/basicsystemenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+
+  item <*> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  basic component in ~beta/basiclib/betaenv
+
+
+Low level information:
+
+Call chain: (nti_ms)
+
+  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
+  { PC  0x0 <<unknown>>
