@@ -1,6 +1,7 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.*;
@@ -27,6 +28,7 @@ public class Converter {
     private ArrayList<Place> arrUnusedPlace;
     private ArrayList<Transition> arrTransition;
     private ArrayList<Arc> arrArc;
+    private HashMap objectId;
 
     public Converter() {
         this.arrMessage = new ArrayList();
@@ -35,6 +37,7 @@ public class Converter {
         this.arrArc = new ArrayList();
         this.arrTransition = new ArrayList();
         this.arrUnusedPlace = new ArrayList();
+        this.objectId = new HashMap();
     }
 
     public void readXML(String xml) {
@@ -60,9 +63,10 @@ public class Converter {
                     //get Object from Sequence Diagram
                     if (el.getNodeName().equals("Objects")) {
                         for (int j = 0; j < el.getElementsByTagName("name").getLength(); j++) {
-                            String name = el.getElementsByTagName("name").item(0).getTextContent();
+                            String name = el.getElementsByTagName("name").item(j).getTextContent();
                             Object temp = new Object(name);
                             arrObject.add(temp);
+                            objectId.put(name, 0);
                         }
                     } else {
                         //get Messages from Sequence Diagram
@@ -118,25 +122,34 @@ public class Converter {
             char type = arrMessage.get(i).getContentType().charAt(0);
             //Handling first message in Sequence Diagram
             if (messageNumber == 1) {
-                Place.qty++;
-                arrPlace.add(new Place((senderName.charAt(0) + "" + Place.qty), messageNumber, senderName, type, true, content));
+                //Place.qty++;
+                int id = (int) objectId.get(senderName);
+                id++;
+                objectId.put(senderName, id);
+                arrPlace.add(new Place((senderName.charAt(0) + "" + id), messageNumber, senderName + " " + id, type, true, content));
+                //arrPlace.add(new Place((senderName.charAt(0) + "" + Place.qty), messageNumber, senderName, type, true, content));
             } else {
                 //Handling message except first message in Sequence Diagram
                 for (int j = 0; j < arrUnusedPlace.size(); j++) {
                     //Handling if the Place is already existed
                     if (arrUnusedPlace.get(j).getName().equals(senderName) && arrUnusedPlace.get(j).getContent() == null) {
-                        arrUnusedPlace.get(j).setName(senderName);
+                        arrUnusedPlace.get(j).setName(senderName + " " + objectId.get(senderName));
                         arrUnusedPlace.get(j).setIsSender(true);
                         arrUnusedPlace.get(j).setContent(content);
                         arrUnusedPlace.get(j).setNumber(messageNumber);
                         arrUnusedPlace.get(j).setType(arrMessage.get(i).getContentType().charAt(0));
                         arrPlace.add(arrUnusedPlace.get(j));
+
                         arrUnusedPlace.remove(j);
                         j = arrUnusedPlace.size();
                     } else {
                         if (j == arrUnusedPlace.size() - 1) {
-                            Place.qty++;
-                            arrPlace.add(new Place((senderName.charAt(0) + "" + Place.qty), messageNumber, senderName, type, true, content));
+//                            Place.qty++;
+//                            arrPlace.add(new Place((senderName.charAt(0) + "" + Place.qty), messageNumber, senderName, type, true, content));
+                            int id = (int) objectId.get(senderName);
+                            id++;
+                            objectId.put(senderName, id);
+                            arrPlace.add(new Place((senderName.charAt(0) + "" + id), messageNumber, senderName + " " + id, type, true, content));
                         }
                     }
                 }
@@ -146,14 +159,18 @@ public class Converter {
             String receiverName = arrMessage.get(i).getReceiver().getName();
             //Handling first message
             if (messageNumber == 1) {
-                Place.qty++;
-                arrPlace.add(new Place((receiverName.charAt(0) + "" + Place.qty), messageNumber, receiverName, type, false, content));
+//                Place.qty++;
+//                arrPlace.add(new Place((receiverName.charAt(0) + "" + Place.qty), messageNumber, receiverName, type, false, content));
+                int id = (int) objectId.get(receiverName);
+                id++;
+                objectId.put(receiverName, id);
+                arrPlace.add(new Place((receiverName.charAt(0) + "" + id), messageNumber, receiverName + " " + id, type, false, content));
             } else {
                 //Handling message except first message in Sequence Diagram
                 for (int j = 0; j < arrUnusedPlace.size(); j++) {
                     //Handling if the Place is already existed
                     if (arrUnusedPlace.get(j).getName().equals(receiverName) && arrUnusedPlace.get(j).getContent() == null) {
-                        arrUnusedPlace.get(j).setName(receiverName);
+                        arrUnusedPlace.get(j).setName(receiverName + " " + objectId.get(receiverName));
                         arrUnusedPlace.get(j).setIsSender(false);
                         arrUnusedPlace.get(j).setContent(content);
                         arrUnusedPlace.get(j).setNumber(messageNumber);
@@ -163,8 +180,12 @@ public class Converter {
                         j = arrUnusedPlace.size();
                     } else {
                         if (j == arrUnusedPlace.size() - 1) {
-                            Place.qty++;
-                            arrPlace.add(new Place((receiverName.charAt(0) + "" + Place.qty), messageNumber, receiverName, type, false, content));
+//                            Place.qty++;
+//                            arrPlace.add(new Place((receiverName.charAt(0) + "" + Place.qty), messageNumber, receiverName, type, false, content));
+                            int id = (int) objectId.get(receiverName);
+                            id++;
+                            objectId.put(receiverName, id);
+                            arrPlace.add(new Place((receiverName.charAt(0) + "" + id), messageNumber, receiverName + " " + id, type, false, content));
                         }
                     }
                 }
@@ -182,14 +203,22 @@ public class Converter {
 
             //Convert to Destination Place (Sender)
             if (i != arrMessage.size() - 1) {
-                Place.qty++;
-                arrUnusedPlace.add(new Place((senderName.charAt(0) + "" + Place.qty), senderName, true));
+//                Place.qty++;
+//                arrUnusedPlace.add(new Place((senderName.charAt(0) + "" + Place.qty), senderName, true));
+                int id = (int) objectId.get(senderName);
+                id++;
+                objectId.put(senderName, id);
+                arrUnusedPlace.add(new Place((senderName.charAt(0) + "" + id), senderName + " " + id, true));
             }
 
             //Convert to Destination Place (Receiver)
             if (i != arrMessage.size() - 1) {
-                Place.qty++;
-                arrUnusedPlace.add(new Place((receiverName.charAt(0) + "" + Place.qty), receiverName, false));
+//                Place.qty++;
+//                arrUnusedPlace.add(new Place((receiverName.charAt(0) + "" + Place.qty), receiverName, false));
+                int id = (int) objectId.get(receiverName);
+                id++;
+                objectId.put(receiverName, id);
+                arrUnusedPlace.add(new Place((receiverName.charAt(0) + "" + id), receiverName + " " + id, false));
             }
 
             //Convert to Arc (Transition to Place)
@@ -240,7 +269,7 @@ public class Converter {
             Element id = dom.createElement("id");
             id.appendChild(dom.createTextNode("Standard declarations"));
             block.appendChild(id);
-            
+
             //colset STRING
             Element color = dom.createElement("color");
             color.setAttribute("id", "");
@@ -249,7 +278,7 @@ public class Converter {
             color.appendChild(id);
             color.appendChild(dom.createElement("string"));
             block.appendChild(color);
-            
+
             //colset NUM
             color = dom.createElement("color");
             color.setAttribute("id", "");
@@ -261,7 +290,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("colset NUM = int;"));
             color.appendChild(layout);
             block.appendChild(color);
-            
+
             //colset TYPE
             color = dom.createElement("color");
             color.setAttribute("id", "");
@@ -286,7 +315,7 @@ public class Converter {
             layout = dom.createElement("layout");
             layout.appendChild(dom.createTextNode("colset TYPE = with m | s | c | d;"));
             color.appendChild(layout);
-            
+
             //colset ACT
             color = dom.createElement("color");
             color.setAttribute("id", "");
@@ -306,7 +335,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("colset ACT = with send | receive;"));
             color.appendChild(layout);
             block.appendChild(color);
-            
+
             //colset CONTENT
             color = dom.createElement("color");
             color.setAttribute("id", "");
@@ -315,7 +344,7 @@ public class Converter {
             color.appendChild(id);
             color.appendChild(dom.createElement("string"));
             block.appendChild(color);
-            
+
             //var NUM
             Element var = dom.createElement("var");
             var.setAttribute("id", "");
@@ -343,7 +372,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("var n,n1,n2,n3,n4 : NUM;"));
             var.appendChild(layout);
             block.appendChild(var);
-            
+
             //var TYPE
             var = dom.createElement("var");
             var.setAttribute("id", "");
@@ -371,7 +400,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("var t,t1,t2,t3,t4 : TYPE;"));
             var.appendChild(layout);
             block.appendChild(var);
-            
+
             //var ACT
             var = dom.createElement("var");
             var.setAttribute("id", "");
@@ -399,7 +428,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("var a,a1,a2,a3,a4 : ACT;"));
             var.appendChild(layout);
             block.appendChild(var);
-            
+
             //var CONTENT
             var = dom.createElement("var");
             var.setAttribute("id", "");
@@ -427,7 +456,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("var ct,ct1,ct2,ct3,ct4 : CONTENT;"));
             var.appendChild(layout);
             block.appendChild(var);
-            
+
             //colset TYPExACTxCONTENT
             color = dom.createElement("color");
             color.setAttribute("id", "");
@@ -450,7 +479,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("colset TYPExACTxCONTENT = product TYPE*ACT*CONTENT timed;"));
             color.appendChild(layout);
             block.appendChild(color);
-            
+
             //var TYPExACTxCONTENT
             var = dom.createElement("var");
             var.setAttribute("id", "");
@@ -466,8 +495,7 @@ public class Converter {
             layout.appendChild(dom.createTextNode("var exp : TYPExACTxCONTENT;"));
             var.appendChild(layout);
             block.appendChild(var);
-            
-            
+
             globbox.appendChild(block);
             e.appendChild(globbox);
             Element page = dom.createElement("page");
@@ -475,31 +503,44 @@ public class Converter {
             Element pageattr = dom.createElement("pageattr");
             pageattr.setAttribute("name", "Page");
             page.appendChild(pageattr);
+
             //write place
             for (int i = 0; i < arrPlace.size(); i++) {
                 Element place = dom.createElement("place");
                 place.setAttribute("id", arrPlace.get(i).getId());
-                Element temp = dom.createElement("postattr");
-                temp.setAttribute("x", "0");
-                temp.setAttribute("y", "0");
-//                place.appendChild(temp);
-//                temp = dom.createElement("fillattr");
-//                temp.setAttribute("colour", "White");
-//                temp.setAttribute("pattern", "Solid");
-//                temp.setAttribute("filled", "false");
-//                place.appendChild(temp);
-//                temp = dom.createElement("lineattr");
-//                temp.setAttribute("colour", "Black");
-//                temp.setAttribute("thick", "2");
-//                temp.setAttribute("type", "Solid");
-//                place.appendChild(temp);
-//                temp = dom.createElement("textattr");
-//                temp.setAttribute("colour", "Black");
-//                temp.setAttribute("bold", "false");
-//                place.appendChild(temp);
-                temp = dom.createElement("text");
+                Element temp = dom.createElement("text");
                 temp.appendChild(dom.createTextNode(arrPlace.get(i).getName()));
                 place.appendChild(temp);
+                temp = dom.createElement("type");
+                Element text = dom.createElement("text");
+                text.setAttribute("tool", "CPN Tools");
+                text.setAttribute("version", "4.0.0");
+                text.appendChild(dom.createTextNode("TYPExACTxCONTENT"));
+                temp.appendChild(text);
+                place.appendChild(temp);
+                temp = dom.createElement("marking");
+                temp.setAttribute("x", "0");
+                temp.setAttribute("y", "0");
+                temp.setAttribute("hidden", "false");
+                place.appendChild(temp);
+                String name = arrPlace.get(i).getName();
+                String[] arrTemp = name.split(" ");
+                if (arrTemp[1].equals("1")) {
+                    temp = dom.createElement("initmarking");
+                    temp.setAttribute("id", "INIT"+(i+1));
+                    text = dom.createElement("text");
+                    text.setAttribute("tool", "CPN Tools");
+                    text.setAttribute("version", "4.0.1");
+                    String tempStatus;
+                    if (arrPlace.get(i).isIsSender()) {
+                        tempStatus = "send";
+                    } else {
+                        tempStatus = "receive";
+                    }
+                    text.appendChild(dom.createTextNode("1`("+ arrPlace.get(i).getType() + ", "+tempStatus+", \""+arrPlace.get(i).getContent()+"\")"));
+                    temp.appendChild(text);
+                    place.appendChild(temp);
+                }
                 page.appendChild(place);
             }
             for (int i = 0; i < arrUnusedPlace.size(); i++) {
@@ -509,6 +550,18 @@ public class Converter {
                 temp.appendChild(dom.createTextNode(arrUnusedPlace.get(i).getName()));
                 place.appendChild(temp);
                 page.appendChild(place);
+                temp = dom.createElement("type");
+                Element text = dom.createElement("text");
+                text.setAttribute("tool", "CPN Tools");
+                text.setAttribute("version", "4.0.0");
+                text.appendChild(dom.createTextNode("TYPExACTxCONTENT"));
+                temp.appendChild(text);
+                place.appendChild(temp);
+                temp = dom.createElement("marking");
+                temp.setAttribute("x", "0");
+                temp.setAttribute("y", "0");
+                temp.setAttribute("hidden", "false");
+                place.appendChild(temp);
             }
 
             //write transition
@@ -534,6 +587,44 @@ public class Converter {
                 temp = dom.createElement("placeend");
                 temp.setAttribute("idref", arrArc.get(i).getPlaceend().getId());
                 arc.appendChild(temp);
+                if (arrArc.get(i).getOrientation().equals("PtoT")) {
+                    if (arrArc.get(i).getPlaceend().isIsSender()) {
+                        Element annot = dom.createElement("annot");
+                        annot.setAttribute("id", "ANN" + (i + 1));
+                        Element text = dom.createElement("text");
+                        text.setAttribute("tool", "CPN Tools");
+                        text.setAttribute("version", "4.0.1");
+                        text.appendChild(dom.createTextNode("1`(t1,a1,ct1)"));
+                        annot.appendChild(text);
+                        arc.appendChild(annot);
+                    } else {
+                        Element annot = dom.createElement("annot");
+                        annot.setAttribute("id", "ANN" + (i + 1));
+                        Element text = dom.createElement("text");
+                        text.setAttribute("tool", "CPN Tools");
+                        text.setAttribute("version", "4.0.1");
+                        text.appendChild(dom.createTextNode("1`(t2,a2,ct2)"));
+                        annot.appendChild(text);
+                        arc.appendChild(annot);
+                    }
+                } else {
+                    Element annot = dom.createElement("annot");
+                    annot.setAttribute("id", "ANN" + (i + 1));
+                    Element text = dom.createElement("text");
+                    text.setAttribute("tool", "CPN Tools");
+                    text.setAttribute("version", "4.0.1");
+                    Place tempPlace = arrArc.get(i).getPlaceend();
+                    String status;
+                    if (tempPlace.isIsSender()) {
+                        status = "send";
+                    } else {
+                        status = "receive";
+                    }
+                    text.appendChild(dom.createTextNode("1`(" + tempPlace.getType() + ", " + status + ", \"" + tempPlace.getContent() + "\")"));
+                    annot.appendChild(text);
+                    arc.appendChild(annot);
+                }
+
                 page.appendChild(arc);
             }
             Element constraint = dom.createElement("constraint");
@@ -579,4 +670,5 @@ public class Converter {
             System.out.println("UsersXML: Error trying to instantiate DocumentBuilder " + pce);
         }
     }
+
 }

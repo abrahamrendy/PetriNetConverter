@@ -1,94 +1,68 @@
-Beta execution aborted: Unordered Floating Point value in comparison.
+Beta execution aborted: Stop is called.
+
+Stop message:
+  "*** Exception processing
+"
 
 Call chain: (nti_ms)
 
-  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
-    -- * in C:/cpn2000/cpntools/instruments/moveinstruments
-  [ EXTERNAL ACTIVATION PART (address 0x0) ]
-  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
-    -- * in C:/cpn2000/cpntools/instruments/moveinstruments
-  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
-    -- * in C:/cpn2000/cpntools/instruments/moveinstruments
-  item <onMouseMove#>onMouseMove# in ~beta/postwimp/foundation/world
-    -- GenericMover#GenericInstrument#EditableInstrument#Instrument# in ~beta/postwimp/workspace
-  item onMouseMove#<onMouseMove#> in ~beta/postwimp/foundation/world
-    -- GenericMover#GenericInstrument#EditableInstrument#Instrument# in ~beta/postwimp/workspace
-  item <*> in ~beta/postwimp/private/workspacepickinstrumentbody
-    -- onMouseMove#onMouseMove# in ~beta/postwimp/workspace
-  item <onMouseMove#>onMouseMove# in ~beta/postwimp/workspace
-    -- PickInstrument#Instrument# in ~beta/postwimp/workspace
-  item onMouseMove#<onMouseMove#> in ~beta/postwimp/foundation/world
-    -- PickInstrument#Instrument# in ~beta/postwimp/workspace
-  item <*> in ~beta/postwimp/foundation/private/worldbody
-    -- mouseMove# in ~beta/postwimp/foundation/world
-  item <mouseMove#> in ~beta/postwimp/foundation/world
-    -- Hand#Entity#Notifier#Element# in ~beta/postwimp/foundation/world
-  item <mousePosition#> in ~beta/postwimp/foundation/world
-    -- Hand#Entity#Notifier#Element# in ~beta/postwimp/foundation/world
-  item <*>scan# in ~beta/postwimp/foundation/private/worldbody
-    -- mousePosition# in ~beta/postwimp/foundation/world
-  item *<scan#> in ~beta/postwimp/foundation/world
-    -- HandManager# in ~beta/postwimp/foundation/world
-  item *<scan#> in ~beta/containers/container
-    -- hands#list#container# in ~beta/postwimp/foundation/world
-  item <thescanner#>theScanner# in ~beta/containers/list
-    -- hands#list#container# in ~beta/postwimp/foundation/world
-  item thescanner#<theScanner#> in ~beta/containers/container
-    -- hands#list#container# in ~beta/postwimp/foundation/world
-  item *<scan#> in ~beta/containers/container
-    -- hands#list#container# in ~beta/postwimp/foundation/world
-  item *<scan#> in ~beta/postwimp/foundation/world
-    -- HandManager# in ~beta/postwimp/foundation/world
-  item <mousePosition#> in ~beta/postwimp/foundation/world
-    -- HandManager# in ~beta/postwimp/foundation/world
-  item <onMousePosition#>onMousePosition# in ~beta/postwimp/foundation/private/worldbody
-    -- WidgetHandler#SurfaceHandler# in ~beta/postwimp/foundation/private/worldbody
-  item onMousePosition#<onMousePosition#> in ~beta/postwimp/foundation/abstractsurface
-    -- WidgetHandler#SurfaceHandler# in ~beta/postwimp/foundation/private/worldbody
-  item <onMousePosition#>onMousePosition# in ~beta/postwimp/foundation/guisurface
-    -- handle#InputHandler# in ~beta/postwimp/foundation/guisurface
-  item onMousePosition#<onMousePosition#> in ~beta/postwimp/foundation/inputcanvas
-    -- handle#InputHandler# in ~beta/postwimp/foundation/guisurface
-  item <dispatchMessage#>dispatchMessage#dispatchMessage# in ~beta/postwimp/foundation/private/inputcanvasntibody
-    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
-  item <dispatchMessage#>dispatchMessage#dispatchMessage# in ~beta/postwimp/foundation/private/inputcanvasntibody
-    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
-  item dispatchMessage#<dispatchMessage#>dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
-    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
-  item <dispatchMessage#>dispatchMessage#dispatchMessage# in ~beta/postwimp/foundation/private/inputcanvasntibody
-    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
-  item dispatchMessage#dispatchMessage#<dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
-    -- InputCanvasMethods#windowItemMethods#interfaceObjectMethods# in ~beta/postwimp/foundation/private/inputcanvasntibody
-  item <GUIENVINTERFACEOBJECTDISPATCHMESSAGE-~> in ~beta/guienv/private/winnt/guienv_ntibody
-    -- dispatchMessage# in ~beta/guienv/private/winnt/guienv_ntiprivate
-  item <dispatchMessage#> in ~beta/guienv/private/winnt/guienv_ntiprivate
-    -- InputCanvas#canvas#windowitem#interfaceObject# in ~beta/postwimp/foundation/inputcanvas
-  item <GUIENVSTANDARDWINDOWPROC-~> in ~beta/guienv/private/winnt/guienv_ntibody
-    -- StandardWindowProc# in ~beta/guienv/private/winnt/guienv_ntiprivate
-  item <*>cycle# in ~beta/guienv/private/winnt/guienvntsystemenvbody
-    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
-  item *<cycle#> in ~beta/basiclib/betaenv
+  item <stop#> in ~beta/basiclib/betaenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
-  comp <XcallbackThread#>System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
-    -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
-  comp XcallbackThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
+  item <exception#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <Error#>error#hiErrCB#integerObject#integerValue# in C:/cpn2000/document/ml/mlsocket
+    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
+  item Error#<error#>hiErrCB#integerObject#integerValue# in ~beta/process/basicsocket
+    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
+  item Error#error#<hiErrCB#>integerObject#integerValue# in ~beta/process/errorcallback
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item Error#error#hiErrCB#<integerObject#>integerValue# in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item Error#error#hiErrCB#integerObject#<integerValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item <error#>hiErrCB#integerObject#integerValue# in ~beta/process/basicsocket
+    -- *Put#withIdle#withPE# in C:/cpn2000/document/ml/private/mlcombody
+  item error#<hiErrCB#>integerObject#integerValue# in ~beta/process/errorcallback
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item error#hiErrCB#<integerObject#>integerValue# in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item error#hiErrCB#integerObject#<integerValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item connBrokenError#<loErrCB#>errCB#integerValue# in ~beta/process/basicsocket
+    -- *Put#withIdle#withPE# in C:/cpn2000/document/ml/private/mlcombody
+  item connBrokenError#loErrCB#<errCB#>integerValue# in ~beta/process/errorcallback
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item connBrokenError#loErrCB#errCB#<integerValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
+  item *<errInquiry#> in ~beta/process/private/basicsocketbody
+    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
+  item <sendMem#> in ~beta/process/private/basicsocketbody
+    -- BASICSOCKETPRIVATE-~ in ~beta/process/private/basicsocketbody
+  item <*> in C:/cpn2000/document/ml/private/mlsocketbody
+    -- *Put#withIdle#withPE# in C:/cpn2000/document/ml/private/mlcombody
+  item *<Put#>withIdle#withPE# in C:/cpn2000/document/ml/mlsocket
+    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
+  item *Put#<withIdle#>withPE# in ~beta/process/basicsocket
+    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
+  item *Put#withIdle#<withPE#> in ~beta/process/basicsocket
+    -- MLSocket#BasicSocket# in C:/cpn2000/document/ml/mlsocket
+  item <Terminate#> in C:/cpn2000/document/ml/private/mlcombody
+    -- MLCOMPRIVATE-~ in C:/cpn2000/document/ml/private/mlcombody
+  comp <ReceiverThread#>System#SysHead# in C:/cpn2000/document/ml/private/mlcombody
+    -- MLCOMPRIVATE-~ in C:/cpn2000/document/ml/private/mlcombody
+  comp ReceiverThread#<System#>SysHead# in ~beta/basiclib/basicsystemenv
     -- PROGRAM-~CPNWorkSpace#Workspace#World#SystemEnv#SysHead# in C:/cpn2000/cpntools/cpntools
-  comp XcallbackThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
+  comp ReceiverThread#System#<SysHead#> in ~beta/basiclib/basicsystemenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
 
+  item <attNext#>realValue# in ~beta/basiclib/private/basicsystemenvbody
+    -- BASICSYSTEMENVPRIVATE-~ in ~beta/basiclib/private/basicsystemenvbody
   item attNext#<realValue#> in ~beta/basiclib/betaenv
     -- BETAENV-~ in ~beta/basiclib/betaenv
-  item <next#> in ~beta/guienv/private/winnt/guienvntsystemenvbody
-    -- XcallbackThread#System#SysHead# in ~beta/guienv/private/winnt/guienvntsystemenvbody
-  item <registerCallback#>XsystemEnvHandleCallbackP# in ~beta/guienv/private/winnt/guienvntsystemenvbody
+  item <UIIdle#>booleanValue# in ~beta/guienv/private/winnt/guienvntsystemenvbody
     -- PIOPRIVATE-~ in ~beta/guienv/private/winnt/guienvntsystemenvbody
-  item registerCallback#<XsystemEnvHandleCallbackP#> in ~beta/guienv/guienv
-    -- GUIenv# in ~beta/guienv/guienv
-  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
-    -- GUIenv# in ~beta/guienv/guienv
-  item <StandardWindowProc#> in ~beta/guienv/private/winnt/guienv_ntiprivate
-    -- GUIenv# in ~beta/guienv/guienv
-  [ EXTERNAL ACTIVATION PART ]
+  item UIIdle#<booleanValue#> in ~beta/basiclib/betaenv
+    -- BETAENV-~ in ~beta/basiclib/betaenv
   item <processOneEvent#> in ~beta/guienv/private/winnt/guienv_ntiprivate
     -- GUIenv# in ~beta/guienv/guienv
   item <mainLoop#> in ~beta/guienv/private/winnt/guienv_ntiprivate
@@ -138,7 +112,9 @@ Call chain: (nti_ms)
 
 Low level information:
 
+Stop message:
+  "*** Exception processing
+"
+
 Call chain: (nti_ms)
 
-  item <*> in C:/cpn2000/cpntools/instruments/moveinstruments
-  { PC  0x0 <<unknown>>

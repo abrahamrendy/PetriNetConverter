@@ -52,6 +52,12 @@ public class Arc {
     public Place getPlaceend() {
         return placeend;
     }
+
+    public int getNumber() {
+        return number;
+    }
+    
+    
     
     public String toString() {
         return number + " " + orientation + " " + transend + " " + placeend;
