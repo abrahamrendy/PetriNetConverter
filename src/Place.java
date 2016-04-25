@@ -16,12 +16,12 @@ public class Place {
     private boolean isSender;
     private String content;
     static int qty;
-    private boolean initmark;
 
     public Place(String id, String name, boolean isSender) {
         this.name = name;
         this.isSender = isSender;
         this.id = id;
+        this.type='d';
     }
 
     public String getId() {
@@ -79,14 +79,6 @@ public class Place {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public boolean isInitmark() {
-        return initmark;
-    }
-
-    public void setInitmark(boolean initmark) {
-        this.initmark = initmark;
     }
 
     public String toString() {

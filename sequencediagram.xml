@@ -12,18 +12,25 @@
 				<contentType>method</contentType>
 				<content>insertCard(customer)</content>
 			</Message>
+		</Messages>
+		<Loop>
 			<Message>
 				<orderNumber>2</orderNumber>
 				<initObject>Actor</initObject>
 				<destObject>Kiosk</destObject>
 				<contentType>method</contentType>
+				<content>blink</content>
+			</Message>
+		</Loop>
+		<Messages>
+			<Message>
+				<orderNumber>3</orderNumber>
+				<initObject>Actor</initObject>
+				<destObject>Kiosk</destObject>
+				<contentType>method</contentType>
 				<content>pickDate(date)</content>
-			</Message>				
-			<Loop>
-				messageNumber = ".."
-				condition = ".."
-				objectName = ".."
-			</Loop>
+			</Message>
+		</Messages>
 			<Alt>
 				<SubAlt1>
 					messageNumber = ".."
@@ -41,5 +48,4 @@
 				condition = ".."
 				objectName = ".."
 			</Opt>
-		</Messages>
 </SequenceDiagram>

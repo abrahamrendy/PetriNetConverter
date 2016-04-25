@@ -3,6 +3,8 @@
 		<Objects>
 			<name>Actor</name>
 			<name>Kiosk</name>
+			<name>TicketServer</name>
+			<name>CreditService</name>
 		</Objects>
 		<Messages>
 			<Message>

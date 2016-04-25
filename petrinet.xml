@@ -104,40 +104,29 @@
             <pageattr name="Page"/>
             <place id="A1">
                 <text>Actor 1</text>
+                <ellipse h="40.000000" w="60.000000"/>
                 <type>
                     <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
                 </type>
                 <marking hidden="false" x="0" y="0"/>
-                <initmarking id="INIT1">
-                    <text tool="CPN Tools" version="4.0.1">1`(m, send, "insertCard(customer)")</text>
-                </initmarking>
+                <initmark id="INIT1">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,send,"insertCard(customer)")</text>
+                </initmark>
             </place>
             <place id="K1">
                 <text>Kiosk 1</text>
+                <ellipse h="40.000000" w="60.000000"/>
                 <type>
                     <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
                 </type>
                 <marking hidden="false" x="0" y="0"/>
-                <initmarking id="INIT2">
+                <initmark id="INIT2">
                     <text tool="CPN Tools" version="4.0.1">1`(m,receive,"insertCard(customer)")</text>
-                </initmarking>
-            </place>
-            <place id="A3">
-                <text>Actor 3</text>
-                <type>
-                    <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
-                </type>
-                <marking hidden="false" x="0" y="0"/>
-            </place>
-            <place id="K3">
-                <text>Kiosk 3</text>
-                <type>
-                    <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
-                </type>
-                <marking hidden="false" x="0" y="0"/>
+                </initmark>
             </place>
             <place id="A2">
                 <text>Actor 2</text>
+                <ellipse h="40.000000" w="60.000000"/>
                 <type>
                     <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
                 </type>
@@ -145,6 +134,23 @@
             </place>
             <place id="K2">
                 <text>Kiosk 2</text>
+                <ellipse h="40.000000" w="60.000000"/>
+                <type>
+                    <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
+                </type>
+                <marking hidden="false" x="0" y="0"/>
+            </place>
+            <place id="A3">
+                <text>Actor 3</text>
+                <ellipse h="40.000000" w="60.000000"/>
+                <type>
+                    <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
+                </type>
+                <marking hidden="false" x="0" y="0"/>
+            </place>
+            <place id="K3">
+                <text>Kiosk 3</text>
+                <ellipse h="40.000000" w="60.000000"/>
                 <type>
                     <text tool="CPN Tools" version="4.0.0">TYPExACTxCONTENT</text>
                 </type>
@@ -152,9 +158,19 @@
             </place>
             <trans explicit="false" id="Trans1">
                 <text>insertCard(customer)</text>
+                <box h="40.000000" w="162.000000"/>
             </trans>
             <trans explicit="false" id="Trans2">
+                <text>blink</text>
+                <box h="40.000000" w="162.000000"/>
+            </trans>
+            <trans explicit="false" id="Loop1">
+                <text>Loop 1</text>
+                <box h="40.000000" w="162.000000"/>
+            </trans>
+            <trans explicit="false" id="Trans3">
                 <text>pickDate(date)</text>
+                <box h="40.000000" w="162.000000"/>
             </trans>
             <arc id="Arc1" order="0" orientation="PtoT">
                 <transend idref="Trans1"/>
@@ -166,44 +182,106 @@
             <arc id="Arc2" order="0" orientation="PtoT">
                 <transend idref="Trans1"/>
                 <placeend idref="K1"/>
-				<annot id="ANN2">
+                <annot id="ANN2">
                     <text tool="CPN Tools" version="4.0.1">1`(t2,a2,ct2)</text>
                 </annot>
             </arc>
             <arc id="Arc3" order="0" orientation="TtoP">
                 <transend idref="Trans1"/>
-                <placeend idref="A2"/>	
+                <placeend idref="A2"/>
+                <annot id="ANN3">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,send,"blink")</text>
+                </annot>
             </arc>
             <arc id="Arc4" order="0" orientation="TtoP">
                 <transend idref="Trans1"/>
                 <placeend idref="K2"/>
+                <annot id="ANN4">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,receive,"blink")</text>
+                </annot>
             </arc>
             <arc id="Arc5" order="0" orientation="PtoT">
                 <transend idref="Trans2"/>
-                <placeend idref="A3"/>
+                <placeend idref="A2"/>
                 <annot id="ANN5">
                     <text tool="CPN Tools" version="4.0.1">1`(t1,a1,ct1)</text>
                 </annot>
             </arc>
             <arc id="Arc6" order="0" orientation="PtoT">
                 <transend idref="Trans2"/>
-                <placeend idref="K3"/>
+                <placeend idref="K2"/>
                 <annot id="ANN6">
                     <text tool="CPN Tools" version="4.0.1">1`(t2,a2,ct2)</text>
                 </annot>
             </arc>
             <arc id="Arc7" order="0" orientation="TtoP">
                 <transend idref="Trans2"/>
-                <placeend idref="A1"/>
+                <placeend idref="A3"/>
                 <annot id="ANN7">
-                    <text tool="CPN Tools" version="4.0.1">1`(m, send, "insertCard(customer)")</text>
+                    <text tool="CPN Tools" version="4.0.1">1`(m,send,"pickDate(date)")</text>
                 </annot>
             </arc>
             <arc id="Arc8" order="0" orientation="TtoP">
                 <transend idref="Trans2"/>
-                <placeend idref="K1"/>
+                <placeend idref="K3"/>
                 <annot id="ANN8">
-                    <text tool="CPN Tools" version="4.0.1">1`(m, receive, "insertCard(customer)")</text>
+                    <text tool="CPN Tools" version="4.0.1">1`(m,receive,"pickDate(date)")</text>
+                </annot>
+            </arc>
+            <arc id="Arc9" order="0" orientation="PtoT">
+                <transend idref="Loop1"/>
+                <placeend idref="A3"/>
+                <annot id="ANN9">
+                    <text tool="CPN Tools" version="4.0.1">1`(t1,a1,ct1)</text>
+                </annot>
+            </arc>
+            <arc id="Arc10" order="0" orientation="PtoT">
+                <transend idref="Loop1"/>
+                <placeend idref="K3"/>
+                <annot id="ANN10">
+                    <text tool="CPN Tools" version="4.0.1">1`(t2,a2,ct2)</text>
+                </annot>
+            </arc>
+            <arc id="Arc11" order="0" orientation="TtoP">
+                <transend idref="Loop1"/>
+                <placeend idref="A2"/>
+                <annot id="ANN11">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,send,"blink")</text>
+                </annot>
+            </arc>
+            <arc id="Arc12" order="0" orientation="TtoP">
+                <transend idref="Loop1"/>
+                <placeend idref="K2"/>
+                <annot id="ANN12">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,receive,"blink")</text>
+                </annot>
+            </arc>
+            <arc id="Arc13" order="0" orientation="PtoT">
+                <transend idref="Trans3"/>
+                <placeend idref="A3"/>
+                <annot id="ANN13">
+                    <text tool="CPN Tools" version="4.0.1">1`(t1,a1,ct1)</text>
+                </annot>
+            </arc>
+            <arc id="Arc14" order="0" orientation="PtoT">
+                <transend idref="Trans3"/>
+                <placeend idref="K3"/>
+                <annot id="ANN14">
+                    <text tool="CPN Tools" version="4.0.1">1`(t2,a2,ct2)</text>
+                </annot>
+            </arc>
+            <arc id="Arc15" order="0" orientation="TtoP">
+                <transend idref="Trans3"/>
+                <placeend idref="A1"/>
+                <annot id="ANN15">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,send,"insertCard(customer)")</text>
+                </annot>
+            </arc>
+            <arc id="Arc16" order="0" orientation="TtoP">
+                <transend idref="Trans3"/>
+                <placeend idref="K1"/>
+                <annot id="ANN16">
+                    <text tool="CPN Tools" version="4.0.1">1`(m,receive,"insertCard(customer)")</text>
                 </annot>
             </arc>
             <constraint/>
