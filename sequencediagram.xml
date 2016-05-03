@@ -14,38 +14,43 @@
 			</Message>
 		</Messages>
 		<Loop>
-			<Message>
-				<orderNumber>2</orderNumber>
-				<initObject>Actor</initObject>
-				<destObject>Kiosk</destObject>
-				<contentType>method</contentType>
-				<content>blink</content>
-			</Message>
 		</Loop>
-		<Messages>
+			<Alt>
+				<SubAlt1>
+					<Message>
+					<orderNumber>4</orderNumber>
+					<initObject>Actor</initObject>
+					<destObject>Kiosk</destObject>
+					<contentType>method</contentType>
+					<content>TESTING SUBALT 1</content>
+				</Message>
+				<Message>
+					<orderNumber>5</orderNumber>
+					<initObject>Actor</initObject>
+					<destObject>Kiosk</destObject>
+					<contentType>method</contentType>
+					<content>TESTING SUBALT 1 2</content>
+				</Message>
+				</SubAlt1>
+				<SubAlt2>
+					<Message>
+					<orderNumber>6</orderNumber>
+					<initObject>Actor</initObject>
+					<destObject>Kiosk</destObject>
+					<contentType>method</contentType>
+					<content>TESTING SUBALT 2</content>
+				</Message>
+				</SubAlt2>
+			</Alt>
+			<Opt>
+			</Opt>
+			<Messages>
 			<Message>
-				<orderNumber>3</orderNumber>
+				<orderNumber>8</orderNumber>
 				<initObject>Actor</initObject>
 				<destObject>Kiosk</destObject>
 				<contentType>method</contentType>
 				<content>pickDate(date)</content>
 			</Message>
 		</Messages>
-			<Alt>
-				<SubAlt1>
-					messageNumber = ".."
-					condition = ".."
-					objectName = ".."
-				</SubAlt1>
-				<SubAlt2>
-					messageNumber = ".."
-					condition = ".."
-					objectName = ".."
-				</SubAlt2>
-			</Alt>
-			<Opt>
-				messageNumber = ".."
-				condition = ".."
-				objectName = ".."
-			</Opt>
 </SequenceDiagram>
