@@ -69,28 +69,6 @@
 				<destObject>Actor</destObject>
 				<contentType>method</contentType>
 				<content>print(order)</content>
-			</Message>	
-			<Loop>
-				messageNumber = ".."
-				condition = ".."
-				objectName = ".."
-			</Loop>
-			<Alt>
-				<SubAlt1>
-					messageNumber = ".."
-					condition = ".."
-					objectName = ".."
-				</SubAlt1>
-				<SubAlt2>
-					messageNumber = ".."
-					condition = ".."
-					objectName = ".."
-				</SubAlt2>
-			</Alt>
-			<Opt>
-				messageNumber = ".."
-				condition = ".."
-				objectName = ".."
-			</Opt>
+			</Message>
 		</Messages>
 </SequenceDiagram>

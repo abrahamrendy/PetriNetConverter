@@ -13,8 +13,8 @@ public class Tester {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      //  String xml = "sequencediagramtestcase.xml";
-        String xml = "sequencediagram.xml";
+       String xml = "sequencediagramtestcaseorder.xml";
+       //String xml = "sequencediagram.xml";
         Converter converter = new Converter();
         converter.readXML(xml);
         converter.convert();

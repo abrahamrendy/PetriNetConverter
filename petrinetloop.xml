@@ -390,7 +390,7 @@
         </marking>
         <type id="ID922122">
           <posattr x="-184.000000"
-                   y="237.000000"/>
+                   y="18.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -441,8 +441,8 @@
                 anchor.vertical="0"/>
         </marking>
         <type id="ID922124">
-          <posattr x="-171.000000"
-                   y="10.000000"/>
+          <posattr x="-342.500000"
+                   y="5.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -1797,8 +1797,8 @@
         <transend idref="Trans4"/>
         <placeend idref="DataSource4"/>
         <annot id="ANN16">
-          <posattr x="-4.000000"
-                   y="-167.000000"/>
+          <posattr x="-234.500000"
+                   y="-637.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -1989,8 +1989,8 @@
         <transend idref="Loop1"/>
         <placeend idref="DataControl6"/>
         <annot id="ANN22">
-          <posattr x="86.000000"
-                   y="-64.000000"/>
+          <posattr x="-197.000000"
+                   y="-380.000000"/>
           <fillattr colour="White"
                     pattern="Solid"
                     filled="false"/>
@@ -2538,12 +2538,12 @@
       <cpnbinder id="ID922554"
                  x="202"
                  y="-6"
-                 width="1135"
+                 width="1038"
                  height="686">
         <sheets>
           <cpnsheet id="ID922528"
-                    panx="140.000000"
-                    pany="-906.000000"
+                    panx="126.000000"
+                    pany="-155.000000"
                     zoom="1.000000"
                     instance="ID922173">
             <zorder>
@@ -2622,9 +2622,7 @@
           <IndexNode expanded="false"/>
         </IndexNode>
       </IndexNode>
-      <IndexNode expanded="false">
-        <IndexNode expanded="false"/>
-      </IndexNode>
+      <IndexNode expanded="false"/>
       <IndexNode expanded="true">
         <IndexNode expanded="false">
           <IndexNode expanded="false"/>

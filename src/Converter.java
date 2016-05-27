@@ -233,30 +233,34 @@ public class Converter {
                 int id = (int) objectId.get(senderName);
                 id++;
                 objectId.put(senderName, id);
-                arrPlace.add(new Place((senderName.charAt(0) + "" + id), messageNumber, senderName + " "
+                arrPlace.add(new Place((senderName + "" + id), messageNumber, senderName + " "
                         + id, type, true, content));
             } else {
                 //Handling message except first message in Sequence Diagram
                 for (int j = 0; j < arrUnusedPlace.size(); j++) {
                     //Handling if the Place is already existed
                     if (arrUnusedPlace.get(j).getName().contains(senderName) && arrUnusedPlace.get(j).getContent() == null) {
-                        if (endAltSender!= null && arrUnusedPlace.get(j).getName().equals(endAltSender.getName())) {
-                            break;
+                        if (endAltSender != null && arrUnusedPlace.get(j).getName().equals(endAltSender.getName())) {
+                            if (((Alt) arrMessage.get(i)).isStartSubAlt()) {
+                                j = arrUnusedPlace.size();
+                                break;
+                            }
+                        } else {
+                            arrUnusedPlace.get(j).setName(senderName + " " + objectId.get(senderName));
+                            arrUnusedPlace.get(j).setIsSender(true);
+                            arrUnusedPlace.get(j).setContent(content);
+                            arrUnusedPlace.get(j).setNumber(messageNumber);
+                            arrUnusedPlace.get(j).setType(arrMessage.get(i).getContentType().charAt(0));
+                            arrPlace.add(arrUnusedPlace.get(j));
+                            arrUnusedPlace.remove(j);
+                            j = arrUnusedPlace.size();
                         }
-                        arrUnusedPlace.get(j).setName(senderName + " " + objectId.get(senderName));
-                        arrUnusedPlace.get(j).setIsSender(true);
-                        arrUnusedPlace.get(j).setContent(content);
-                        arrUnusedPlace.get(j).setNumber(messageNumber);
-                        arrUnusedPlace.get(j).setType(arrMessage.get(i).getContentType().charAt(0));
-                        arrPlace.add(arrUnusedPlace.get(j));
-                        arrUnusedPlace.remove(j);
-                        j = arrUnusedPlace.size();
                     } else {
                         if (j == arrUnusedPlace.size() - 1) {
                             int id = (int) objectId.get(senderName);
                             id++;
                             objectId.put(senderName, id);
-                            arrPlace.add(new Place((senderName.charAt(0) + "" + id), messageNumber, senderName + " "
+                            arrPlace.add(new Place((senderName + "" + id), messageNumber, senderName + " "
                                     + id, type, true, content));
                         }
                     }
@@ -269,30 +273,37 @@ public class Converter {
                 int id = (int) objectId.get(receiverName);
                 id++;
                 objectId.put(receiverName, id);
-                arrPlace.add(new Place((receiverName.charAt(0) + "" + id), messageNumber, receiverName + " " + id,
+                arrPlace.add(new Place((receiverName + "" + id), messageNumber, receiverName + " " + id,
                         type, false, content));
             } else {
                 //Handling message except first message in Sequence Diagram
                 for (int j = 0; j < arrUnusedPlace.size(); j++) {
                     //Handling if the Place is already existed
                     if (arrUnusedPlace.get(j).getName().contains(receiverName) && arrUnusedPlace.get(j).getContent() == null) {
-                       if (endAltReceiver != null && arrUnusedPlace.get(j).getName().equals(endAltReceiver.getName())) {
-                           break;
+                        if (endAltReceiver != null && arrUnusedPlace.get(j).getName().equals(endAltReceiver.getName())) {
+                            System.out.println("here");
+                            if (((Alt) arrMessage.get(i)).isStartSubAlt()) {
+                                System.out.println("Break: " + arrUnusedPlace.get(j).getName());
+                                j = arrUnusedPlace.size();
+                                break;
+                            }
+                        } else {
+                            arrUnusedPlace.get(j).setName(receiverName + " " + objectId.get(receiverName));
+                            System.out.println(arrUnusedPlace.get(j).getId() + " id: " + receiverName + " " + objectId.get(receiverName));
+                            arrUnusedPlace.get(j).setIsSender(false);
+                            arrUnusedPlace.get(j).setContent(content);
+                            arrUnusedPlace.get(j).setNumber(messageNumber);
+                            arrUnusedPlace.get(j).setType(arrMessage.get(i).getContentType().charAt(0));
+                            arrPlace.add(arrUnusedPlace.get(j));
+                            arrUnusedPlace.remove(j);
+                            j = arrUnusedPlace.size();
                         }
-                        arrUnusedPlace.get(j).setName(receiverName + " " + objectId.get(receiverName));
-                        arrUnusedPlace.get(j).setIsSender(false);
-                        arrUnusedPlace.get(j).setContent(content);
-                        arrUnusedPlace.get(j).setNumber(messageNumber);
-                        arrUnusedPlace.get(j).setType(arrMessage.get(i).getContentType().charAt(0));
-                        arrPlace.add(arrUnusedPlace.get(j));
-                        arrUnusedPlace.remove(j);
-                        j = arrUnusedPlace.size();
                     } else {
                         if (j == arrUnusedPlace.size() - 1) {
                             int id = (int) objectId.get(receiverName);
                             id++;
                             objectId.put(receiverName, id);
-                            arrPlace.add(new Place((receiverName.charAt(0) + "" + id), messageNumber, receiverName + " "
+                            arrPlace.add(new Place((receiverName + "" + id), messageNumber, receiverName + " "
                                     + id, type, false, content));
                         }
                     }
@@ -325,18 +336,24 @@ public class Converter {
 
             //Convert to Destination Place (Sender)
             if (i != arrMessage.size() - 1) {
+                System.out.println("dest: "+content);
                 int id = (int) objectId.get(senderName);
                 id++;
                 objectId.put(senderName, id);
-                arrUnusedPlace.add(new Place((senderName.charAt(0) + "" + id), senderName + " " + id, true));
+                arrUnusedPlace.add(new Place((senderName + "" + id), senderName + " " + id, true));
+                System.out.println("dest place: "+ (senderName + "" + id)+ senderName + " " + id);
             }
 
             //Convert to Destination Place (Receiver)
             if (i != arrMessage.size() - 1) {
-                int id = (int) objectId.get(receiverName);
-                id++;
-                objectId.put(receiverName, id);
-                arrUnusedPlace.add(new Place((receiverName.charAt(0) + "" + id), receiverName + " " + id, false));
+                //handling destroy message
+                if (type != 'd') {
+                    int id = (int) objectId.get(receiverName);
+                    id++;
+                    objectId.put(receiverName, id);
+                    arrUnusedPlace.add(new Place((receiverName + "" + id), receiverName + " " + id, false));
+                    // System.out.println("Unused: " + (receiverName + "" + id) + receiverName + " " + id);
+                }
             }
 
             //Convert to Arc (Transition to Place)
@@ -344,6 +361,38 @@ public class Converter {
                 Alt altTemp = (Alt) arrMessage.get(i);
                 if (!altTemp.isStartSubAlt()) {
                     if (!altTemp.isEndSubAlt()) {
+                        if (type != 'd') {
+                            System.out.println("type: " + type);
+                            if (i == arrMessage.size() - 1) {
+                                arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                        arrPlace.get(0)));
+                                arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                        arrPlace.get(1)));
+                            } else {
+                                arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                        arrUnusedPlace.get(arrUnusedPlace.size() - 2)));
+                                arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                        arrUnusedPlace.get(arrUnusedPlace.size() - 1)));
+                            }
+                        } else {
+                            arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                    arrUnusedPlace.get(arrUnusedPlace.size() - 1)));
+                            String id = receiverName + "1";
+                            Place dest = null;
+                            for (int j = 0; j < arrPlace.size(); j++) {
+                                if (arrPlace.get(j).getId().equals(id)) {
+                                    dest = arrPlace.get(j);
+                                }
+                            }
+                            arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                    dest));
+                            System.out.println("dest:" + dest);
+                        }
+                    }
+                }
+            } else {
+                if (!(arrMessage.get(i) instanceof Alt)) {
+                    if (type != 'd') {
                         if (i == arrMessage.size() - 1) {
                             arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
                                     arrPlace.get(0)));
@@ -355,20 +404,19 @@ public class Converter {
                             arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
                                     arrUnusedPlace.get(arrUnusedPlace.size() - 1)));
                         }
-                    }
-                }
-            } else {
-                if (!(arrMessage.get(i) instanceof Alt)) {
-                    if (i == arrMessage.size() - 1) {
-                        arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
-                                arrPlace.get(0)));
-                        arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
-                                arrPlace.get(1)));
                     } else {
                         arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
-                                arrUnusedPlace.get(arrUnusedPlace.size() - 2)));
-                        arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
                                 arrUnusedPlace.get(arrUnusedPlace.size() - 1)));
+                        String id = receiverName + "1";
+                        Place dest = null;
+                        for (int j = 0; j < arrPlace.size(); j++) {
+                            if (arrPlace.get(j).getId().equals(id)) {
+                                dest = arrPlace.get(j);
+                            }
+                        }
+                        arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                dest));
+                        System.out.println("dest:" + dest);
                     }
                 }
             }
@@ -410,7 +458,7 @@ public class Converter {
                             arrUnusedPlace.get(arrUnusedPlace.size() - 1)));
                 }
             }
-            
+
             //Alt handler
             if (arrMessage.get(i) instanceof Alt) {
                 if (((Alt) arrMessage.get(i)).isStartAlt()) {
@@ -453,6 +501,8 @@ public class Converter {
                     if (endAltSender == null) {
                         endAltSender = arrUnusedPlace.get(arrUnusedPlace.size() - 2);
                         endAltReceiver = arrUnusedPlace.get(arrUnusedPlace.size() - 1);
+                        System.out.println("aa: "+ endAltSender);
+                        System.out.println(((Alt) arrMessage.get(i)).getContent());
                     }
                     if (!((Alt) arrMessage.get(i)).isStartSubAlt()) {
                         arrArc.add(new Arc(messageNumber, "PtoT", arrTransition.get(arrTransition.size() - 1),
@@ -460,17 +510,26 @@ public class Converter {
                         arrArc.add(new Arc(messageNumber, "PtoT", arrTransition.get(arrTransition.size() - 1),
                                 arrPlace.get(arrPlace.size() - 1)));
                     }
-                    arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
-                            endAltSender));
-                    System.out.println(endAltSender);
-                    arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
-                            endAltReceiver));
-                    System.out.println(endAltReceiver);
+                    if (((Alt) arrMessage.get(i)).isStartSubAlt()) {
+                        arrArc.add(new Arc(messageNumber, "TtoP", tempAlt1,
+                                endAltSender));
+                        arrArc.add(new Arc(messageNumber, "TtoP", tempAlt1,
+                                endAltReceiver));
+                    } else {
+                        arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                endAltSender));
+                        System.out.println(endAltSender);
+                        arrArc.add(new Arc(messageNumber, "TtoP", arrTransition.get(arrTransition.size() - 1),
+                                endAltReceiver));
+                        System.out.println(endAltReceiver);
+                    }
                 }
 
                 if (((Alt) arrMessage.get(i)).isEndAlt()) {
                     arrArc.add(new Arc(messageNumber, "TtoP", tempAlt2, endAltSender));
                     arrArc.add(new Arc(messageNumber, "TtoP", tempAlt2, endAltReceiver));
+                    arrUnusedPlace.remove(arrUnusedPlace.size() - 1);
+                    arrUnusedPlace.remove(arrUnusedPlace.size() - 1);
                     endAltReceiver = null;
                     endAltSender = null;
                 }
@@ -478,6 +537,7 @@ public class Converter {
         }
         System.out.println(arrMessage.toString());
         System.out.println(arrPlace.toString());
+        System.out.println(arrUnusedPlace.toString());
         System.out.println(arrTransition.toString());
         System.out.println(arrArc.toString());
         System.out.println(arrArc.size());
@@ -754,9 +814,9 @@ public class Converter {
                 Element place = dom.createElement("place");
                 place.setAttribute("id", arrPlace.get(i).getId());
                 Element postattr = dom.createElement("posattr");
-                postattr.setAttribute("x", x+"");
-                postattr.setAttribute("y", y+"");
-                y+=50;
+                postattr.setAttribute("x", x + "");
+                postattr.setAttribute("y", y + "");
+                y -= 50;
                 place.appendChild(postattr);
                 Element temp = dom.createElement("text");
                 temp.appendChild(dom.createTextNode(arrPlace.get(i).getName()));
@@ -802,9 +862,9 @@ public class Converter {
                 Element place = dom.createElement("place");
                 place.setAttribute("id", arrUnusedPlace.get(i).getId());
                 Element postattr = dom.createElement("posattr");
-                postattr.setAttribute("x", x+"");
-                postattr.setAttribute("y", y+"");
-                y+=50;
+                postattr.setAttribute("x", x + "");
+                postattr.setAttribute("y", y + "");
+                y -= 50;
                 place.appendChild(postattr);
                 Element temp = dom.createElement("text");
                 temp.appendChild(dom.createTextNode(arrUnusedPlace.get(i).getName()));
@@ -834,9 +894,9 @@ public class Converter {
                 trans.setAttribute("explicit", "false");
                 trans.setAttribute("id", arrTransition.get(i).getId());
                 Element postattr = dom.createElement("posattr");
-                postattr.setAttribute("x", x+"");
-                postattr.setAttribute("y", y+"");
-                y+=50;
+                postattr.setAttribute("x", x + "");
+                postattr.setAttribute("y", y + "");
+                y -= 50;
                 trans.appendChild(postattr);
                 Element temp = dom.createElement("text");
                 temp.appendChild(dom.createTextNode(arrTransition.get(i).getName()));

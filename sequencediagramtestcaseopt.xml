@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SequenceDiagram>
+		<Objects>
+			<name>DataControl</name>
+			<name>DataSource</name>
+		</Objects>
+		<Messages>
+			<Message>
+				<orderNumber>1</orderNumber>
+				<initObject>DataControl</initObject>
+				<destObject>DataSource</destObject>
+				<contentType>method</contentType>
+				<content>request_array_size</content>
+			</Message>
+		</Messages>
+		<Opt>
+			<Message>
+				<orderNumber>2</orderNumber>
+				<initObject>DataControl</initObject>
+				<destObject>DataSource</destObject>
+				<contentType>method</contentType>
+				<content>insert_array()</content>
+			</Message>
+		</Opt>
+		<Messages>
+			<Message>
+				<orderNumber>3</orderNumber>
+				<initObject>DataSource</initObject>
+				<destObject>DataControl</destObject>
+				<contentType>signal</contentType>
+				<content>send(array_size)</content>
+			</Message>
+		</Messages>
+</SequenceDiagram>

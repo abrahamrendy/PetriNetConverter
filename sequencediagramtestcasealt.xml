@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SequenceDiagram>
+		<Objects>
+			<name>Person</name>
+			<name>ATMMachine</name>
+		</Objects>
+		<Messages>
+			<Message>
+				<orderNumber>1</orderNumber>
+				<initObject>Person</initObject>
+				<destObject>ATMMachine</destObject>
+				<contentType>method</contentType>
+				<content>insertCard()</content>
+			</Message>
+		</Messages>
+		<Alt>
+			<SubAlt1>
+					<Message>
+					<orderNumber>2</orderNumber>
+					<initObject>ATMMachine</initObject>
+					<destObject>Person</destObject>
+					<contentType>method</contentType>
+					<content>askPassword()</content>
+				</Message>
+			</SubAlt1>
+			<SubAlt2>
+				<Message>
+					<orderNumber>3</orderNumber>
+					<initObject>ATMMachine</initObject>
+					<destObject>Person</destObject>
+					<contentType>method</contentType>
+					<content>displayInvalid</content>
+				</Message>
+			</SubAlt2>
+		</Alt>
+		<Messages>
+			<Message>
+				<orderNumber>4</orderNumber>
+				<initObject>ATMMachine</initObject>
+				<destObject>Person</destObject>
+				<contentType>method</contentType>
+				<content>ejectCard()</content>
+			</Message>
+		</Messages>
+</SequenceDiagram>

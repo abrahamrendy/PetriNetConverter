@@ -13,8 +13,6 @@
 				<content>insertCard(customer)</content>
 			</Message>
 		</Messages>
-		<Loop>
-		</Loop>
 			<Alt>
 				<SubAlt1>
 					<Message>
@@ -40,10 +38,15 @@
 					<contentType>method</contentType>
 					<content>TESTING SUBALT 2</content>
 				</Message>
+				<Message>
+					<orderNumber>7</orderNumber>
+					<initObject>Actor</initObject>
+					<destObject>Kiosk</destObject>
+					<contentType>method</contentType>
+					<content>TESTING SUBALT 2 2</content>
+				</Message>
 				</SubAlt2>
 			</Alt>
-			<Opt>
-			</Opt>
 			<Messages>
 			<Message>
 				<orderNumber>8</orderNumber>

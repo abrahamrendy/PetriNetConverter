@@ -110,7 +110,7 @@ public class View extends javax.swing.JFrame {
             converter.convert();
             converter.writeXML("petrinet.xml");
             this.jFileChooser1.setVisible(false);
-            this.jLabel3.setText("<html>File converted to " + xml + "</html>");
+            this.jLabel3.setText("<html>File converted to petrinet.xml" + "</html>");
             this.jLabel3.setVisible(true);
             this.jButton1.setVisible(false);
             this.jButton2.setVisible(true);
