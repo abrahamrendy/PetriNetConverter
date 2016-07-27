@@ -1,59 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SequenceDiagram>
 		<Objects>
-			<name>Actor</name>
-			<name>Kiosk</name>
+			<name>Person</name>
+			<name>ATMMachine</name>
 		</Objects>
 		<Messages>
 			<Message>
 				<orderNumber>1</orderNumber>
-				<initObject>Actor</initObject>
-				<destObject>Kiosk</destObject>
+				<initObject>Person</initObject>
+				<destObject>ATMMachine</destObject>
 				<contentType>method</contentType>
-				<content>insertCard(customer)</content>
+				<content>insertCard()</content>
 			</Message>
 		</Messages>
-			<Alt>
-				<SubAlt1>
+		<Alt>
+			<SubAlt1>
 					<Message>
+					<orderNumber>2</orderNumber>
+					<initObject>ATMMachine</initObject>
+					<destObject>Person</destObject>
+					<contentType>method</contentType>
+					<content>askPassword()</content>
+				</Message>
+				<Message>
+					<orderNumber>3</orderNumber>
+					<initObject>Person</initObject>
+					<destObject>ATMMachine</destObject>
+					<contentType>method</contentType>
+					<content>inputPassword()</content>
+				</Message>
+			</SubAlt1>
+			<SubAlt2>
+				<Message>
 					<orderNumber>4</orderNumber>
-					<initObject>Actor</initObject>
-					<destObject>Kiosk</destObject>
+					<initObject>ATMMachine</initObject>
+					<destObject>Person</destObject>
 					<contentType>method</contentType>
-					<content>TESTING SUBALT 1</content>
+					<content>displayInvalid</content>
 				</Message>
-				<Message>
-					<orderNumber>5</orderNumber>
-					<initObject>Actor</initObject>
-					<destObject>Kiosk</destObject>
-					<contentType>method</contentType>
-					<content>TESTING SUBALT 1 2</content>
-				</Message>
-				</SubAlt1>
-				<SubAlt2>
-					<Message>
-					<orderNumber>6</orderNumber>
-					<initObject>Actor</initObject>
-					<destObject>Kiosk</destObject>
-					<contentType>method</contentType>
-					<content>TESTING SUBALT 2</content>
-				</Message>
-				<Message>
-					<orderNumber>7</orderNumber>
-					<initObject>Actor</initObject>
-					<destObject>Kiosk</destObject>
-					<contentType>method</contentType>
-					<content>TESTING SUBALT 2 2</content>
-				</Message>
-				</SubAlt2>
-			</Alt>
-			<Messages>
+			</SubAlt2>
+		</Alt>
+		<Messages>
 			<Message>
-				<orderNumber>8</orderNumber>
-				<initObject>Actor</initObject>
-				<destObject>Kiosk</destObject>
+				<orderNumber>5</orderNumber>
+				<initObject>ATMMachine</initObject>
+				<destObject>Person</destObject>
 				<contentType>method</contentType>
-				<content>pickDate(date)</content>
+				<content>ejectCard()</content>
 			</Message>
 		</Messages>
 </SequenceDiagram>
